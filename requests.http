@@ -1,0 +1,39 @@
+@domain = http://localhost:3000
+@jwt = eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozLCJleHAiOjE2NDMzMzk5Mjd9.H2BBH_SIElknVBprj1HcZAw6BHoOFreCjIB5at7xRhg
+
+### Create
+POST {{ domain }}/users
+Content-Type: application/json
+
+{
+  "name": "Monte",
+  "email": "monte@gmail.com",
+  "password": "password",
+  "password_confirmation": "password"
+}
+
+### Sessions Create
+POST {{ domain }}/sessions
+Content-Type: application/json
+
+{
+  "email": "monte@gmail.com",
+  "password": "password"
+}
+
+### User info
+GET {{ domain }}/user_info
+Authorization: Bearer {{ jwt }}
+
+### Update User
+PATCH {{ domain }}/users/3
+Authorization: Bearer {{ jwt }}
+
+{
+  "name": "Monte the Cat",
+  "email": "monte@gmail.com",
+  "password": "password",
+  "password_confirmation": "password"
+}
+
+
